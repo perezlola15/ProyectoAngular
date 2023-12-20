@@ -1,0 +1,17 @@
+<h2>Login</h2>
+<br />
+<form class="form-login" #form="ngForm" (ngSubmit)="login(form)">
+    <div class="form-group col-md-3">
+        <label for="email">Email: </label>
+        <input type="text" id="email" [(ngModel)]="creds.email" name="email" required placeholder="Email">
+    </div>
+    <br />
+    <div class="form-group col-md-3">
+        <label for="password">Password: </label>
+        <input type="password" id="password" [(ngModel)]="creds.password" name="password" required
+            placeholder="Password">
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success">Login</button>
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+</form>
