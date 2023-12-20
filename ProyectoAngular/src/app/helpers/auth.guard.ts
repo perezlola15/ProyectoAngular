@@ -16,12 +16,9 @@ export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     console.log('AuthGuard canActivate function is running');
     if (this.loginService.getToken()) {
-      console.log('Token exists. Allowing access.');
-      //this.router.navigate(['login']);
       return true;
     }
-    console.log('No token. Redirecting to login.');
-    this.router.navigate(['login']);
+    this.router.navigate(['']);
     return false;
   }
   

@@ -20,23 +20,10 @@ export class LoginComponent {
 
   constructor(private loginService: LoginService, private router: Router) { }
 
-  /*onSubmit(): void {
-    this.loginService.login(this.email, this.password)
-      .subscribe(
-        response => {
-          this.loginService.saveToken(response.token);
-          this.router.navigate(['landing']);
-        },
-        error => {
-          this.errorMessage = 'Usuario no válido';
-        }
-      );
-  } */
-
   login(form: NgForm) {
     console.log('form value', form.value);
     this.loginService.login(this.creds).subscribe(response => {
-      this.router.navigate(['/']);
+      this.router.navigate(['landing']);
     })
   }
 
