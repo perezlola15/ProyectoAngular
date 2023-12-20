@@ -6,10 +6,10 @@ import { AuthGuard } from './helpers/auth.guard';
 import { FormUserComponent } from './form-user/form-user.component';
 
 const routes: Routes = [
-  { path: '', component: landingComponent, canActivate: [AuthGuard]}, 
-  { path: 'login', component: LoginComponent}, 
-  { path: 'form', component: FormUserComponent}, 
-  { path: 'form/:id', component: FormUserComponent} 
+  { path: 'landing', component: landingComponent, canActivate: [AuthGuard]}, 
+  { path: '', component: LoginComponent}, 
+  { path: 'form', component: FormUserComponent, canActivate: [AuthGuard]}, 
+  { path: 'form/:id', component: FormUserComponent, canActivate: [AuthGuard]} 
 ];
 
 @NgModule({
