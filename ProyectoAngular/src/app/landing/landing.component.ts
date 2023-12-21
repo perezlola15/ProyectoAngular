@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../model/User';
 import { UsersService } from '../service/users.service';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { LoginService } from '../service/login.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class landingComponent implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
-    private usersService: UsersService
+    private usersService: UsersService, 
+    private loginService : LoginService
   ) { }
 
   ngOnInit(): void {
@@ -49,12 +51,16 @@ export class landingComponent implements OnInit {
           if (token) {
             localStorage.setItem('token', token);
           }
-
           this.users = response.body;
+          this.users = this.users.sort((a, b) => b.id - a.id);
         },
         (error) => {
           this.errorMessage = error.message;
         }
       );
+  }
+
+  logout() {
+    this.loginService.logout();
   }
 }

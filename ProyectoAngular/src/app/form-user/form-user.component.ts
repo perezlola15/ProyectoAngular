@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class FormUserComponent implements OnInit {
   user: User = new User();
-  title: string = "Student registration";
+  title: string = "Student information";
 
   constructor(private usersService: UsersService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
@@ -33,17 +33,17 @@ export class FormUserComponent implements OnInit {
 
   create(): void {
     this.usersService.createUser(this.user).subscribe(
-      response => this.router.navigate([''])
+      response => this.router.navigate(['landing'])
     );
   }
 
   update(): void {
     this.usersService.updateUser(this.user).subscribe(
       response => {
-        this.router.navigate(['']);
+        this.router.navigate(['landing']);
       },
     );
   }
-  
+
 
 }
